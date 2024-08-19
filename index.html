@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrol Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="calculator-container">
+        <a href="https://www.soloist.ai/f2g" target="_blank"><img src="f2glogo.png" alt="Company Logo" class="center"></a>
+        <form id="petrolCostForm">
+            <label for="petrolCost">Enter Monthly Petrol Cost:</label>
+            <input type="number" id="petrolCost" name="petrolCost" required><br><br>
+            <button type="submit" class="center">Calculate</button>
+        </form>
+        <p id="monthSavingText"></p>
+        <p id="yearSavingText"></p>
+        <footer>
+            <div class="whatsapp-buttons">
+                <a href="https://wa.link/n3kcpb" class="whatsapp-button">
+                    <img src="whatsapp.png" alt="WhatsApp">  <!-- <a href="https://www.flaticon.com/free-icons/whatsapp" title="whatsapp icons">Whatsapp icons created by Freepik - Flaticon</a> -->
+                    <span>Questions or calculations</span>
+                </a>
+                <a href="https://wa.link/dfxob4" class="whatsapp-button">
+                    <img src="whatsapp.png" alt="WhatsApp">  <!-- <a href="https://www.flaticon.com/free-icons/whatsapp" title="whatsapp icons">Whatsapp icons created by Freepik - Flaticon</a> -->
+                    <span>Ready to buy</span>
+                </a>
+                <a href="https://wa.link/qky0e1" class="whatsapp-button">
+                    <img src="whatsapp.png" alt="WhatsApp"> <!-- <a href="https://www.flaticon.com/free-icons/whatsapp" title="whatsapp icons">Whatsapp icons created by Freepik - Flaticon</a> -->
+                    <span>Become a reseller</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    
+
+    <script>
+        $(document).ready(function() {
+            $("#petrolCostForm").submit(function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                var petrolCost = parseInt($("#petrolCost").val());
+
+                var monthlySaving = petrolCost * 0.55;
+                var annualSaving = monthlySaving * 12;
+
+                // Format the savings amounts with spaces every 3 digits
+                var formattedMonthlySaving = monthlySaving.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                var formattedAnnualSaving = annualSaving.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+                $("#monthSavingText").text("Monthly Saving: P " + formattedMonthlySaving);
+                $("#yearSavingText").text("Annual Saving: P " + formattedAnnualSaving);
+            });
+        });
+    </script>
+</body>
+</html>
